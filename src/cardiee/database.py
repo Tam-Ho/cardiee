@@ -3,10 +3,11 @@ from contextlib import contextmanager
 from datetime import datetime
 from typing import Generator, List, Optional, Tuple
 
-from .core import DB_READ_ERROR, DB_WRITE_ERROR, SUCCESS, Flashcard
+from . import DB_READ_ERROR, DB_WRITE_ERROR, SUCCESS
+from .models import Flashcard
 
 
-def _init_database(db_path: str) -> int:
+def init_database(db_path: str) -> int:
     """Initialize the database with required tables."""
     try:
         with sqlite3.connect(db_path) as conn:
@@ -31,7 +32,6 @@ def _init_database(db_path: str) -> int:
 class DatabaseHandler:
     def __init__(self, db_path: str) -> None:
         self.db_path = db_path
-        _init_database(db_path)
 
     @contextmanager
     def _get_connection(self) -> Generator[sqlite3.Connection, None, None]:

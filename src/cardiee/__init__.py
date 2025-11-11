@@ -1,5 +1,3 @@
-from typing import NamedTuple
-
 __app_name__ = "cardiee"
 __version__ = "0.1.0"
 
@@ -22,10 +20,3 @@ ERRORS = {
     DB_WRITE_ERROR: "database write error",
     ID_ERROR: "to-do id error",
 }
-
-
-class Flashcard(NamedTuple):
-    id: int
-    question: str
-    answer: str
-    deadline: str

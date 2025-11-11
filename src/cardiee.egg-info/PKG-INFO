@@ -1,0 +1,15 @@
+Metadata-Version: 2.4
+Name: cardiee
+Version: 0.1.0
+Summary: Add your description here
+Requires-Python: >=3.13
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: openai>=2.3.0
+Requires-Dist: pytest>=8.4.2
+Requires-Dist: python-dotenv>=1.2.1
+Requires-Dist: typer>=0.17.3
+Dynamic: license-file
+
+# cardiee
+A smart, self-hosted AI flashcard application designed to optimize study efficiency through evidence-based learning techniques like spaced repetition and active recall along with AI assistant. Inspired by Anki's effectiveness and the learning principles in 'Make It Stick'.

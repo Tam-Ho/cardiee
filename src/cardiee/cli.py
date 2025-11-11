@@ -7,23 +7,23 @@ import typer
 from rich.console import Console
 from rich.table import Table
 
-from .core import (
+from . import (
     DB_PATH,
     ERRORS,
     SUCCESS,
     __app_name__,
     __version__,
-    cardiee,
-    database,
 )
+from .core import Cardiee
+from .database import init_database
 
 app = typer.Typer()
 
 
-def get_cardiee() -> cardiee.Cardiee:
+def get_cardiee() -> Cardiee:
     db_path = Path(DB_PATH) if not isinstance(DB_PATH, Path) else DB_PATH
     if db_path.exists():
-        return cardiee.Cardiee()
+        return Cardiee()
     else:
         typer.secho(
             'Database not found. Please, run "cardiee init"', fg=typer.colors.RED
@@ -57,7 +57,7 @@ def init() -> None:
     """
     Initialize the database.
     """
-    database_init_code = database._init_database(DB_PATH)
+    database_init_code = init_database(DB_PATH)
     if database_init_code != SUCCESS:
         typer.secho(
             f"Initializing database failed with {ERRORS[database_init_code]}.",

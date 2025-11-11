@@ -1,0 +1,16 @@
+LICENSE
+README.md
+pyproject.toml
+src/cardiee/__init__.py
+src/cardiee/__main__.py
+src/cardiee/ai.py
+src/cardiee/cli.py
+src/cardiee/core.py
+src/cardiee/database.py
+src/cardiee/models.py
+src/cardiee.egg-info/PKG-INFO
+src/cardiee.egg-info/SOURCES.txt
+src/cardiee.egg-info/dependency_links.txt
+src/cardiee.egg-info/requires.txt
+src/cardiee.egg-info/top_level.txt
+tests/test_cardiee.py

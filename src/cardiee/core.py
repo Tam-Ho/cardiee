@@ -1,11 +1,13 @@
 from typing import List, Optional, Tuple
 
-from .core import DB_PATH, ERRORS, SUCCESS, Flashcard, database
+from . import DB_PATH, ERRORS, SUCCESS
+from .database import DatabaseHandler
+from .models import Flashcard
 
 
 class Cardiee:
     def __init__(self):
-        self.db_handler = database.DatabaseHandler(DB_PATH)
+        self.db_handler = DatabaseHandler(DB_PATH)
 
     def add_card(self, question: str, answer: str) -> Tuple[Optional[Flashcard], int]:
         return self.db_handler.add_card(question, answer)
@@ -25,7 +27,7 @@ class Cardiee:
         return self.db_handler.update_card_deadline(card_id, reset)
 
     def study(self) -> None:
-        cards, code = self.db_handler.list_expired_cards()
+        cards, code = self.db_handler.list_cards(expired_only=True)
         if code != SUCCESS:
             print(f"Error retrieving flashcards: {ERRORS[code]}")
             return
